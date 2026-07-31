@@ -1,28 +1,23 @@
-import React from "react";
+import "./ProductsSection.css";
 
-function ProductCard({image,title,description}){
+function ProductCard({ image, title, description }) {
+  return (
+    <div className="product-card">
+      <div className="product-image-box">
+        <img src={image} alt={title} className="product-image" />
+      </div>
 
-return(
-<div className="product-card">
+      <div className="product-content">
+        <h3>{title}</h3>
 
-<img
-  src={image}
-  alt={title}
-  style={{
-    width: "300px",
-    height: "220px",
-    border: "2px solid red",
-    objectFit: "contain"
-  }}
-/>
+        <p>{description}</p>
 
-<h3>{title}</h3>
-
-<p>{description}</p>
-
-</div>
-)
-
+       <button className="product-btn">
+  Learn More
+</button>
+      </div>
+    </div>
+  );
 }
 
 export default ProductCard;

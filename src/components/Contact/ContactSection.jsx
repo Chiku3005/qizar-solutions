@@ -1,62 +1,106 @@
-import "./ContactSection.css";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import './ContactSection.css';
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt
+} from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 function ContactSection() {
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
 
-      <h2>Contact Us</h2>
-
-      <p className="contact-subtitle">
-        We'd love to hear from you. Get in touch with us today.
-      </p>
+      <div className="contact-header">
+        <span>CONTACT US</span>
+        <h2>Let's Build Something Great Together</h2>
+        <p>
+          Have a project in mind? Reach out to our team and we'll
+          help you transform your ideas into digital solutions.
+        </p>
+      </div>
 
       <div className="contact-container">
 
-        <div className="contact-info">
+        <motion.div
+          className="contact-info"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
 
-          <div className="info-box">
-            <FaPhoneAlt className="icon" />
+          <div className="info-card">
+            <div className="info-icon">
+              <FaPhoneAlt />
+            </div>
             <div>
-              <h4>Phone</h4>
+              <h3>Phone</h3>
               <p>+91 XXXXX XXXXX</p>
             </div>
           </div>
 
-          <div className="info-box">
-            <FaEnvelope className="icon" />
+          <div className="info-card">
+            <div className="info-icon">
+              <FaEnvelope />
+            </div>
             <div>
-              <h4>Email</h4>
+              <h3>Email</h3>
               <p>info@qizarsolutions.com</p>
             </div>
           </div>
 
-          <div className="info-box">
-            <FaMapMarkerAlt className="icon" />
+          <div className="info-card">
+            <div className="info-icon">
+              <FaMapMarkerAlt />
+            </div>
             <div>
-              <h4>Location</h4>
+              <h3>Location</h3>
               <p>Noida, Uttar Pradesh, India</p>
             </div>
           </div>
 
-        </div>
+        </motion.div>
 
-        <form className="contact-form">
+    <motion.form
+  className="contact-form"
+  initial={{ opacity: 0, x: 50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.7 }}
+  viewport={{ once: true }}
+>
 
-          <input type="text" placeholder="Your Name" />
+  <div className="form-row">
 
-          <input type="email" placeholder="Your Email" />
+    <input
+      type="text"
+      placeholder="Your Name"
+      required
+    />
 
-          <textarea
-            rows="5"
-            placeholder="Your Message"
-          ></textarea>
+    <input
+      type="email"
+      placeholder="Your Email"
+      required
+    />
 
-          <button type="submit">
-            Send Message
-          </button>
+  </div>
 
-        </form>
+  <input
+    type="text"
+    placeholder="Company Name"
+  />
+
+  <textarea
+    rows="6"
+    placeholder="Your Message"
+    required
+  />
+
+  <button type="submit">
+    Send Message
+  </button>
+
+</motion.form>
 
       </div>
 

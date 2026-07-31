@@ -1,0 +1,29 @@
+.hero-stats{
+display:flex;
+gap:25px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.stat-card{
+background:#fff;
+padding:20px 30px;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-6px);
+}
+
+.stat-card h2{
+color:#c82b2b;
+font-size:34px;
+margin-bottom:8px;
+}
+
+.stat-card p{
+color:#666;
+font-size:15px;
+}

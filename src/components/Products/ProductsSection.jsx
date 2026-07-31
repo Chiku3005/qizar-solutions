@@ -1,56 +1,51 @@
+import React, { useEffect, useState } from "react";
 import "./ProductsSection.css";
-import React from "react";
 import ProductCard from "./ProductCard";
-
-import product1 from "../../assets/images/product1.jpg";
-import product2 from "../../assets/images/product2.jpg";
-import product3 from "../../assets/images/product3.jpg";
+import { getProducts } from "../../api/productApi";
 
 
 function ProductsSection() {
+ const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      image: product1,
-      title: "Product 1",
-      description: "Technology solution"
-    },
-    {
-      image: product2,
-      title: "Product 2",
-      description: "Digital solution"
-    },
-    {
-      image: product3,
-      title: "Product 3",
-      description: "Innovative product"
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const response = await getProducts();
+
+      console.log("Products received:", response.data);
+
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
-  ];
+  };
 
+  fetchProducts();
+}, []);
 
   return (
-   <section className="products-section">
+    <section className="products-section" id="products">
 
-  <h2>Our Products</h2>
+      <h2>Our Products</h2>
 
-  <p className="products-subtitle">
-    Discover our innovative technology products designed to empower businesses.
-  </p>
+      <p className="products-subtitle">
+        Explore our innovative technology solutions designed to accelerate business growth.
+      </p>
 
-  <div className="product-container">
-
-        {
-          products.map((item,index)=>(
-            <ProductCard
-              key={index}
-              image={item.image}
-              title={item.title}
-              description={item.description}
-            />
-          ))
-        }
-
-      </div>
+      <div className="product-container">
+  {products.map((product) => (
+    <div key={product._id} style={{ border: "1px solid black", padding: "20px", margin: "10px" }}>
+      <h2>{product.name}</h2>
+      <img
+        src={product.image}
+        alt={product.name}
+        width="200"
+      />
+      <p>{product.description}</p>
+      <p>₹{product.price}</p>
+    </div>
+  ))}
+</div>
 
     </section>
   );

@@ -1,38 +1,22 @@
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import AboutSection from "./components/About/AboutSection";
-import ProductsSection from "./components/Products/ProductsSection";
-import ServicesSection from "./components/Services/ServicesSection";
-import ContactSection from "./components/Contact/ContactSection";
-import Footer from "./components/Footer/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from "./Home";
+import AdminDashboard from "./admin/AdminDashboard";
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <BrowserRouter>
+      <Routes>
 
-      <section id="home">
-        <Hero />
-      </section>
+        <Route path="/" element={<Home />} />
 
-      <section id="about">
-  <AboutSection />
-</section>
+        <Route
+          path="/admin"
+          element={<AdminDashboard />}
+        />
 
-     <section id="services">
-  <ServicesSection />
-</section>
-
-      <section id="products">
-  <ProductsSection />
-</section>
-
-      <section id="contact">
-        <h1>Contact Us</h1>
-        <p>Get in touch with Qizar Solutions.</p>
-      </section>
-    </>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,78 +1,94 @@
-import { motion } from "framer-motion";
+import "./AboutSection.css";
 import aboutImage from "../../assets/images/about.jpg";
+import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function AboutSection() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+    <section className="about-section" id="about">
 
-        {/* Left Image */}
+      <div className="about-container">
+
         <motion.div
-          initial={{ opacity: 0, x: -80 }}
+          className="about-image"
+          initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <img
-            src={aboutImage}
-            alt="About Qizar Solutions"
-            className="rounded-2xl shadow-xl w-full"
-          />
+          <img src={aboutImage} alt="About Qizar Solutions" />
         </motion.div>
 
-        {/* Right Content */}
         <motion.div
-          initial={{ opacity: 0, x: 80 }}
+          className="about-content"
+          initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="text-[#c82b2b] font-semibold uppercase tracking-widest">
-            ABOUT US
-          </p>
 
-          <h2 className="text-4xl lg:text-5xl font-bold mt-4 leading-tight text-gray-900">
-            Your Trusted Technology Partner
-          </h2>
+          <span className="section-tag">
+  ABOUT US
+</span>
 
-          <p className="mt-8 text-gray-600 leading-8 text-lg">
-            Qizar Solutions delivers innovative broadcast, networking,
-            enterprise IT, and media technology solutions for businesses
-            across India. We are committed to providing high-quality
-            products, expert consultation, and reliable technical support.
-          </p>
+<h2>
+  Welcome to Qizar Solutions Pvt. Ltd.
+</h2>
 
-          <div className="grid grid-cols-2 gap-6 mt-10">
+<p>
+  Qizar Solutions Pvt. Ltd. empowers broadcasters, television service providers,
+  and enterprises with innovative technology solutions. As the media and
+  broadcasting industry evolves with new business models, emerging technologies,
+  and digital-first audiences, we help organizations adapt through reliable,
+  scalable, and future-ready solutions.
+</p>
 
-            <div className="bg-gray-50 p-6 rounded-xl shadow">
-              <h3 className="text-3xl font-bold text-[#c82b2b]">
-                15+
-              </h3>
+<p>
+  Our experienced team specializes in workflow optimization, facility planning,
+  system integration, and outsourcing solutions. By combining industry expertise
+  with cutting-edge technology, we enable businesses to improve efficiency,
+  accelerate digital transformation, and deliver exceptional customer experiences.
+</p>
 
-              <p className="mt-2 text-gray-600">
-                Years of Experience
-              </p>
-            </div>
+         <div className="about-features">
 
-            <div className="bg-gray-50 p-6 rounded-xl shadow">
-              <h3 className="text-3xl font-bold text-[#c82b2b]">
-                500+
-              </h3>
+  <div>
+    <FaCheckCircle />
+    <span>Broadcast & Media Solutions</span>
+  </div>
 
-              <p className="mt-2 text-gray-600">
-                Successful Projects
-              </p>
-            </div>
+  <div>
+    <FaCheckCircle />
+    <span>Workflow & Facility Planning</span>
+  </div>
 
-          </div>
+  <div>
+    <FaCheckCircle />
+    <span>System Integration Services</span>
+  </div>
 
-          <button className="mt-10 bg-[#c82b2b] text-white px-8 py-4 rounded-lg hover:bg-[#a61f1f] transition duration-300 shadow-lg">
-            Learn More
-          </button>
+  <div>
+    <FaCheckCircle />
+    <span>Technology Consulting</span>
+  </div>
 
+</div>
+
+          <div className="about-buttons">
+
+  <a href="#services" className="primary-btn">
+    Our Services
+  </a>
+
+  <a href="#contact" className="secondary-btn">
+    Get in Touch <FaArrowRight />
+  </a>
+
+</div>
         </motion.div>
 
       </div>
+
     </section>
   );
 }

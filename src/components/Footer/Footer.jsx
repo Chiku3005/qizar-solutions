@@ -1,71 +1,58 @@
 import "./Footer.css";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaInstagram,
-  FaEnvelope,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
 
-function Footer() {
-  return (
-    <footer className="footer">
+function Footer(){
 
-      <div className="footer-container">
+return(
 
-        <div className="footer-column">
-          <h2>Qizar Solutions</h2>
+<footer className="footer">
 
-          <p>
-            Empowering businesses with innovative software,
-            AI, cloud, and digital transformation solutions.
-          </p>
-        </div>
+<div className="footer-container">
 
-        <div className="footer-column">
-          <h3>Quick Links</h3>
+<h2>Qizar Solutions</h2>
 
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#products">Products</a>
-          <a href="#contact">Contact</a>
-        </div>
+<p>
 
-        <div className="footer-column">
-          <h3>Contact</h3>
+Qizar Solutions is committed to delivering reliable,
+innovative and scalable technology solutions that help
+businesses succeed in the digital era.
 
-          <p><FaPhoneAlt /> +91 XXXXX XXXXX</p>
+</p>
 
-          <p><FaEnvelope /> info@qizarsolutions.com</p>
+<div className="footer-bottom">
 
-          <p><FaMapMarkerAlt /> Noida, Uttar Pradesh</p>
-        </div>
+<p>
 
-        <div className="footer-column">
-          <h3>Follow Us</h3>
+© 2026 Qizar Solutions. All Rights Reserved.
 
-          <div className="social-icons">
+</p>
 
-            <a href="#"><FaFacebookF /></a>
+</div>
 
-            <a href="#"><FaLinkedinIn /></a>
+</div>
 
-            <a href="#"><FaInstagram /></a>
+<div className="footer-links">
 
-          </div>
+<a href="#">
+Privacy Policy
+</a>
 
-        </div>
+<a href="#">
+Terms & Conditions
+</a>
 
-      </div>
+</div>
 
-      <div className="footer-bottom">
-        © 2026 Qizar Solutions. All Rights Reserved.
-      </div>
+<div className="copyright">
 
-    </footer>
-  );
+© 2026 Qizar Solutions.
+All Rights Reserved.
+
+</div>
+
+</footer>
+
+)
+
 }
 
 export default Footer;

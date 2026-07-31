@@ -13,64 +13,61 @@ const services = [
     icon: <FaBroadcastTower />,
     title: "Broadcast Solutions",
     description:
-      "Complete broadcast solutions for television, radio and media production.",
-  },
-  {
-    icon: <FaCloud />,
-    title: "Cloud Services",
-    description:
-      "Secure cloud deployment, storage and enterprise cloud infrastructure.",
-  },
-  {
-    icon: <FaVideo />,
-    title: "Audio & Video",
-    description:
-      "Professional AV systems, streaming and multimedia integration.",
-  },
-  {
-    icon: <FaNetworkWired />,
-    title: "Networking",
-    description:
-      "Reliable networking infrastructure for businesses and enterprises.",
-  },
-  {
-    icon: <FaTools />,
-    title: "Technical Support",
-    description:
-      "Dedicated engineers providing installation and after-sales support.",
+      "Advanced broadcast technology solutions for television networks, media companies, and content providers."
   },
   {
     icon: <FaServer />,
-    title: "IT Infrastructure",
+    title: "System Integration",
     description:
-      "Servers, storage, virtualization and enterprise IT solutions.",
+      "Seamless integration of enterprise hardware, software, and network infrastructure for efficient operations."
   },
+  {
+    icon: <FaCloud />,
+    title: "Cloud Infrastructure",
+    description:
+      "Scalable cloud deployment, migration, virtualization, and infrastructure management services."
+  },
+  {
+    icon: <FaVideo />,
+    title: "Media Workflow",
+    description:
+      "Optimized media asset management, production workflows, and content delivery solutions."
+  },
+  {
+    icon: <FaNetworkWired />,
+    title: "Enterprise Networking",
+    description:
+      "Secure, high-performance networking solutions designed for enterprise and broadcast environments."
+  },
+  {
+    icon: <FaTools />,
+    title: "Technology Consulting",
+    description:
+      "Professional consulting, facility planning, and workflow optimization to accelerate digital transformation."
+  }
 ];
-
 function ServicesSection() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50" id="services">
       <div className="max-w-7xl mx-auto px-6">
-
         <div className="text-center mb-16">
           <p className="text-[#c82b2b] font-semibold uppercase tracking-widest">
             Our Services
           </p>
 
           <h2 className="text-4xl lg:text-5xl font-bold mt-4">
-            Solutions We Provide
-          </h2>
+  Our Expertise
+</h2>
 
           <p className="text-gray-600 mt-5 max-w-3xl mx-auto">
-            We provide end-to-end technology solutions for broadcasting,
-            enterprise networking, IT infrastructure and digital transformation.
-          </p>
+  We deliver end-to-end technology solutions for broadcasters,
+  media organizations, and enterprises through innovative
+  infrastructure, storage, networking, and system integration services.
+</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
           {services.map((service, index) => (
-
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
@@ -79,7 +76,6 @@ function ServicesSection() {
               viewport={{ once: true }}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2"
             >
-
               <div className="w-16 h-16 bg-[#c82b2b] rounded-full flex items-center justify-center text-white text-3xl mb-6">
                 {service.icon}
               </div>
@@ -95,13 +91,9 @@ function ServicesSection() {
               <button className="mt-6 text-[#c82b2b] font-semibold hover:underline">
                 Learn More →
               </button>
-
             </motion.div>
-
           ))}
-
         </div>
-
       </div>
     </section>
   );

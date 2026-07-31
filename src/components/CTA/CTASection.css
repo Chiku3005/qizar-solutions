@@ -1,0 +1,57 @@
+.cta-section {
+  background: linear-gradient(135deg, #c82b2b, #a91f1f);
+  color: white;
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.cta-container h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.cta-container p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-primary,
+.cta-secondary {
+  text-decoration: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cta-primary {
+  background: white;
+  color: #c82b2b;
+}
+
+.cta-primary:hover {
+  background: #f3f3f3;
+}
+
+.cta-secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.cta-secondary:hover {
+  background: white;
+  color: #c82b2b;
+}
