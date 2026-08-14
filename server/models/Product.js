@@ -5,26 +5,44 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
 
-    description: {
+    brand: {
       type: String,
-      required: true,
-    },
-
-    price: {
-      type: Number,
-      required: true,
-    },
-
-    image: {
-      type: String,
-      required: true,
+      trim: true,
+      default: "",
     },
 
     category: {
       type: String,
-      required: true,
+      trim: true,
+      default: "",
+    },
+
+    description: {
+      type: String,
+      default: "",
+    },
+
+    image: {
+      type: String,
+      default: "",
+    },
+
+    specifications: {
+      type: String,
+      default: "",
+    },
+
+    purchaseUrl: {
+      type: String,
+      default: "",
+    },
+
+    price: {
+      type: Number,
+      default: 0,
     },
 
     stock: {
@@ -37,6 +55,4 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
-
-module.exports = Product;
+module.exports = mongoose.model("Product", productSchema);

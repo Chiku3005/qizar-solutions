@@ -1,124 +1,1177 @@
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
 .hero {
-  min-height: 90vh;
+  position: relative;
+
+  min-height: 92vh;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 80px 8%;
-  gap: 50px;
+
+  gap: 65px;
+
+  padding: 115px 7% 70px;
+
   overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(200, 43, 43, 0.055),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #ffffff 65%,
+      #fff7f7 100%
+    );
 }
+
+
+/* =====================================================
+   BACKGROUND CIRCLES
+===================================================== */
+
+.hero-bg-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.hero-circle-one {
+  width: 520px;
+  height: 520px;
+
+  right: -230px;
+  top: -210px;
+
+  border: 1px solid rgba(200, 43, 43, 0.10);
+}
+
+.hero-circle-two {
+  width: 380px;
+  height: 380px;
+
+  left: -240px;
+  bottom: -240px;
+
+  background: rgba(200, 43, 43, 0.025);
+}
+
+
+/* =====================================================
+   SUBTLE GRID PATTERN
+===================================================== */
+
+.hero-grid-pattern {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(
+      rgba(200, 43, 43, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(200, 43, 43, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  /* Cross-browser mask support */
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 25%,
+    black 75%,
+    transparent
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 25%,
+    black 75%,
+    transparent
+  );
+
+  z-index: 0;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
 .hero-content {
-  width: 50%;
+  position: relative;
+
+  width: 53%;
+
+  max-width: 720px;
+
+  z-index: 2;
 }
 
-.hero-content h1 {
-  font-size: 64px;
-  line-height: 1.1;
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.hero-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 16px;
+
+  margin-bottom: 22px;
+
+  background: rgba(255, 241, 241, 0.85);
+
+  border: 1px solid #ffd5d5;
+
+  border-radius: 50px;
+
+  color: #c82b2b;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+
+  box-shadow:
+    0 5px 18px rgba(200, 43, 43, 0.05);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #c82b2b;
+
+  box-shadow:
+    0 0 0 4px rgba(200, 43, 43, 0.10);
+}
+
+
+/* =====================================================
+   HERO TITLE
+===================================================== */
+
+.hero-title {
+  margin: 0;
+
+  max-width: 700px;
+
+  color: #111827;
+
+  font-size: clamp(34px, 4.2vw, 52px);
+
+  line-height: 1.04;
+
+  font-weight: 800;
+
+  letter-spacing: -2.5px;
+}
+
+.hero-title span {
+  color: #c82b2b;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.hero-description {
+  max-width: 625px;
+
+  margin: 24px 0 0;
+
+  color: #657080;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  font-weight: 400;
+}
+
+
+/* =====================================================
+   HERO LIST
+===================================================== */
+
+.hero-list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 11px 24px;
+
+  margin-top: 23px;
+}
+
+.hero-list-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #263142;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.hero-list-item svg {
+  flex-shrink: 0;
+
+  color: #c82b2b;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.hero-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 30px;
+}
+
+.primary-btn,
+.secondary-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  border-radius: 10px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =====================================================
+   PRIMARY BUTTON
+===================================================== */
+
+.primary-btn {
+  padding: 13px 21px;
+
+  background: #c82b2b;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 25px rgba(200, 43, 43, 0.22);
+}
+
+.primary-btn:hover {
+  background: #ad2020;
+
+  box-shadow:
+    0 14px 30px rgba(200, 43, 43, 0.28);
+}
+
+.primary-btn svg {
+  font-size: 12px;
+
+  transition: transform 0.3s ease;
+}
+
+.primary-btn:hover svg {
+  transform: translateX(4px);
+}
+
+
+/* =====================================================
+   SECONDARY BUTTON
+===================================================== */
+
+.secondary-btn {
+  padding: 12px 19px;
+
+  border: 1px solid #dce1e8;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  color: #273142;
+}
+
+.secondary-btn:hover {
+  border-color: #c82b2b;
+
+  color: #c82b2b;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.play-icon {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff0f0;
+
+  color: #c82b2b;
+
+  font-size: 9px;
+}
+
+
+/* =====================================================
+   HERO STATS
+===================================================== */
+
+.hero-stats {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 34px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #e9edf2;
+}
+
+.hero-stat {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.stat-icon {
+  width: 37px;
+  height: 37px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #fff0f0;
+
+  color: #c82b2b;
+
+  font-size: 14px;
+}
+
+.stat-content h3 {
+  margin: 0;
+
+  color: #1f2937;
+
+  font-size: 13px;
+
   font-weight: 700;
 }
 
-.hero-content p {
-  font-size: 18px;
-  margin-top: 20px;
-  color: #555;
+.stat-content p {
+  margin: 2px 0 0;
+
+  color: #8a94a3;
+
+  font-size: 10px;
 }
+
+.stat-divider {
+  width: 1px;
+  height: 32px;
+
+  background: #e4e8ee;
+}
+
+
+/* =====================================================
+   RIGHT HERO VISUAL
+===================================================== */
+
+.hero-visual {
+  position: relative;
+
+  width: 44%;
+
+  min-height: 510px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+
+/* =====================================================
+   IMAGE GLOW
+===================================================== */
+
+.hero-image-glow {
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  border-radius: 50%;
+
+  background: rgba(200, 43, 43, 0.08);
+
+  filter: blur(60px);
+
+  z-index: -1;
+}
+
+
+/* =====================================================
+   IMAGE WRAPPER
+===================================================== */
+
+.hero-image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 570px;
+
+  padding: 9px;
+
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  box-shadow:
+    0 25px 55px rgba(31, 41, 55, 0.13);
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   HERO IMAGE
+===================================================== */
 
 .hero-image {
-  width: 45%;
-}
+  display: block;
 
-.hero-image img {
   width: 100%;
-  border-radius: 10px;
-}
-@media (max-width: 768px) {
 
-  .hero{
-background:
-linear-gradient(to right,#ffffff,#f4f8fc);
+  height: 500px;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  border-radius: 18px;
 }
+
+
+/* =====================================================
+   IMAGE OVERLAY
+===================================================== */
+
+.hero-image-overlay {
+  position: absolute;
+
+  inset: 9px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200, 43, 43, 0.12),
+      transparent 45%
+    );
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* =====================================================
+   IMAGE SHINE
+===================================================== */
+
+.hero-image-shine {
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 60%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.22),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  animation: heroShine 7s infinite;
+
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+@keyframes heroShine {
+
+  0% {
+    left: -120%;
+  }
+
+  35% {
+    left: 130%;
+  }
+
+  100% {
+    left: 130%;
+  }
+}
+
+
+/* =====================================================
+   FLOATING CARDS
+===================================================== */
+
+.hero-floating-card {
+  position: absolute;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 185px;
+
+  padding: 12px 14px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.10);
+
+  /* Cross-browser backdrop blur */
+
+  -webkit-backdrop-filter: blur(12px);
+
+  backdrop-filter: blur(12px);
+
+  z-index: 5;
+}
+
+
+/* =====================================================
+   CARD POSITIONS
+===================================================== */
+
+.hero-card-one {
+  top: 48px;
+
+  left: -42px;
+}
+
+.hero-card-two {
+  right: -32px;
+
+  bottom: 72px;
+}
+
+
+/* =====================================================
+   FLOATING ICON
+===================================================== */
+
+.floating-icon {
+  width: 37px;
+  height: 37px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #fff0f0;
+
+  color: #c82b2b;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   FLOATING CONTENT
+===================================================== */
+
+.floating-content strong {
+  display: block;
+
+  color: #202938;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+.floating-content span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #8a94a3;
+
+  font-size: 9px;
+
+  font-weight: 500;
+}
+
+
+/* =====================================================
+   TECHNOLOGY LABEL
+===================================================== */
+
+.hero-tech-label {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 15px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  background: rgba(17, 24, 39, 0.93);
+
+  color: #ffffff;
+
+  border-radius: 50px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12);
+
+  z-index: 6;
+}
+
+.tech-pulse {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #c82b2b;
+
+  box-shadow:
+    0 0 0 4px rgba(200, 43, 43, 0.18);
+
+  animation: techPulse 2s infinite;
+}
+
+@keyframes techPulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px rgba(200, 43, 43, 0.12);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(200, 43, 43, 0.05);
+  }
+}
+
+
+/* =====================================================
+   DECORATIVE DOTS
+===================================================== */
+
+.hero-visual-dot {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #c82b2b;
+
+  opacity: 0.7;
+
+  z-index: 1;
+}
+
+.hero-dot-one {
+  top: 18%;
+
+  right: 3%;
+}
+
+.hero-dot-two {
+  bottom: 18%;
+
+  left: 5%;
+
+  width: 5px;
+  height: 5px;
+
+  opacity: 0.45;
+}
+
+
+/* =====================================================
+   LARGE TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .hero {
+    gap: 40px;
+
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 5vw, 55px);
+  }
+
+  .hero-floating-card {
+    transform: scale(0.92);
+  }
+
+  .hero-card-one {
+    left: -22px;
+  }
+
+  .hero-card-two {
+    right: -18px;
+  }
+
+  .hero-stats {
+    gap: 14px;
+  }
+
+  .stat-divider {
+    height: 28px;
+  }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .hero {
+    min-height: auto;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 20px;
+
+    padding:
+      120px
+      6%
+      70px;
+  }
 
   .hero-content,
-  .hero-image {
+  .hero-visual {
     width: 100%;
   }
 
-  .hero-content h1 {
-    font-size: 42px;
+  .hero-content {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    text-align: center;
   }
 
-}
-.hero-stats{
-display:flex;
-gap:50px;
-margin-top:50px;
+  .hero-title {
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: clamp(43px, 7vw, 58px);
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-list {
+    justify-content: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 500px;
+
+    margin-top: 15px;
+  }
+
+  .hero-image-wrapper {
+    max-width: 650px;
+  }
+
+  .hero-image {
+    height: 500px;
+  }
 }
 
-.hero-stats h2{
-color:#c82b2b;
-font-size:38px;
-margin-bottom:8px;
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .hero {
+    padding:
+      105px
+      5%
+      55px;
+
+    gap: 10px;
+  }
+
+  .hero-badge {
+    padding: 7px 12px;
+
+    margin-bottom: 18px;
+
+    font-size: 10px;
+  }
+
+  .hero-title {
+    font-size: 35px;
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .hero-list {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 18px;
+  }
+
+  .hero-list-item {
+    font-size: 12px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 10px;
+
+    margin-top: 25px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+
+    min-height: 46px;
+  }
+
+  .hero-stats {
+    gap: 8px;
+
+    justify-content: space-between;
+
+    margin-top: 28px;
+
+    padding-top: 20px;
+  }
+
+  .hero-stat {
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 5px;
+  }
+
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+
+    font-size: 12px;
+  }
+
+  .stat-content h3 {
+    font-size: 10px;
+  }
+
+  .stat-content p {
+    font-size: 8px;
+  }
+
+  .stat-divider {
+    height: 35px;
+  }
+
+  .hero-visual {
+    min-height: 375px;
+
+    margin-top: 10px;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 7px;
+
+    border-radius: 20px;
+  }
+
+  .hero-image {
+    height: 360px;
+
+    border-radius: 14px;
+  }
+
+  .hero-image-overlay {
+    inset: 7px;
+
+    border-radius: 14px;
+  }
+
+  .hero-floating-card {
+    min-width: 145px;
+
+    padding: 8px 9px;
+
+    gap: 7px;
+
+    border-radius: 10px;
+  }
+
+  .hero-card-one {
+    top: 18px;
+
+    left: -4px;
+  }
+
+  .hero-card-two {
+    right: -4px;
+
+    bottom: 48px;
+  }
+
+  .floating-icon {
+    width: 29px;
+    height: 29px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+  }
+
+  .floating-content strong {
+    font-size: 9px;
+  }
+
+  .floating-content span {
+    font-size: 7px;
+  }
+
+  .hero-tech-label {
+    bottom: 5px;
+
+    padding: 7px 11px;
+
+    font-size: 8px;
+  }
+
+  .tech-pulse {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hero-circle-one {
+    width: 300px;
+    height: 300px;
+
+    right: -180px;
+    top: -100px;
+  }
+
+  .hero-circle-two {
+    width: 250px;
+    height: 250px;
+
+    left: -180px;
+    bottom: -150px;
+  }
+
+  .hero-grid-pattern {
+    opacity: 0.2;
+  }
+
+  .hero-visual-dot {
+    display: none;
+  }
 }
 
-.hero-stats p{
-color:#555;
-}
 
-.primary-btn{
-background:#c82b2b;
-color:#fff;
-padding:15px 35px;
-border:none;
-border-radius:10px;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 10px 20px rgba(200,43,43,.3);
-}
+/* =====================================================
+   EXTRA SMALL DEVICES
+===================================================== */
 
-.primary-btn:hover{
-transform:translateY(-5px);
-box-shadow:0 20px 35px rgba(200,43,43,.4);
-}
+@media (max-width: 380px) {
 
-.secondary-btn{
-background:white;
-border:2px solid #c82b2b;
-color:#c82b2b;
-padding:15px 35px;
-border-radius:8px;
-cursor:pointer;
-transition:.3s;
-}
+  .hero-title {
+    font-size: 31px;
+  }
 
-.secondary-btn:hover{
-background:#c82b2b;
-color:white;
-}
+  .hero-description {
+    font-size: 13px;
+  }
 
-.section-title{
-font-size:42px;
-font-weight:700;
-text-align:center;
-color:#111827;
-margin-bottom:20px;
-}
+  .hero-list-item {
+    font-size: 11px;
+  }
 
-.section-subtitle{
-text-align:center;
-color:#666;
-max-width:700px;
-margin:auto;
-margin-bottom:60px;
-line-height:1.8;
-}
-.hero-badge{
-display:inline-block;
-padding:10px 18px;
-background:#ffe8e8;
-color:#c82b2b;
-font-weight:600;
-border-radius:30px;
-margin-bottom:25px;
+  .hero-image {
+    height: 320px;
+  }
+
+  .hero-visual {
+    min-height: 340px;
+  }
+
+  .hero-floating-card {
+    min-width: 130px;
+  }
+
+  .hero-card-one {
+    left: -2px;
+  }
+
+  .hero-card-two {
+    right: -2px;
+  }
 }

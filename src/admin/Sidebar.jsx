@@ -1,53 +1,164 @@
 import {
   FaTachometerAlt,
   FaBoxOpen,
-  FaUsers,
   FaShoppingCart,
+  FaUsers,
+  FaChartBar,
   FaSignOutAlt,
 } from "react-icons/fa";
 
-function Sidebar() {
-  return (
-    <div className="w-64 h-screen bg-slate-900 text-white fixed left-0 top-0">
+import { NavLink, useNavigate } from "react-router-dom";
 
-      <div className="text-2xl font-bold p-6 border-b border-slate-700">
-        Qizar Admin
+
+function Sidebar() {
+  const navigate = useNavigate();
+
+  const menuItems = [
+    {
+      name: "Dashboard",
+      path: "/admin/dashboard",
+      icon: <FaTachometerAlt />,
+    },
+    {
+      name: "Products",
+      path: "/admin/products",
+      icon: <FaBoxOpen />,
+    },
+    {
+      name: "Orders",
+      path: "/admin/orders",
+      icon: <FaShoppingCart />,
+    },
+    {
+      name: "Users",
+      path: "/admin/users",
+      icon: <FaUsers />,
+    },
+    {
+      name: "Analytics",
+      path: "/admin/analytics",
+      icon: <FaChartBar />,
+    },
+  ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("isAdminLoggedIn");
+
+    navigate("/admin/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <aside className="admin-sidebar">
+
+      {/* ==============================
+          LOGO
+      ============================== */}
+
+      <div className="sidebar-logo">
+
+        <div className="sidebar-logo-icon">
+          Q
+        </div>
+
+        <div className="sidebar-logo-text">
+          <h2>Qizar</h2>
+          <span>SOLUTIONS</span>
+        </div>
+
       </div>
 
-      <ul className="mt-8 space-y-2">
 
-        <li className="flex items-center gap-3 px-6 py-3 hover:bg-slate-800 cursor-pointer">
-          <FaTachometerAlt />
-          Dashboard
-        </li>
+      {/* ==============================
+          NAVIGATION
+      ============================== */}
 
-        <li className="flex items-center gap-3 px-6 py-3 hover:bg-slate-800 cursor-pointer">
-          <FaBoxOpen />
-          Products
-        </li>
+      <nav className="sidebar-navigation">
 
-        <li className="flex items-center gap-3 px-6 py-3 hover:bg-slate-800 cursor-pointer">
-          <FaShoppingCart />
-          Orders
-        </li>
+        {menuItems.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
 
-        <li className="flex items-center gap-3 px-6 py-3 hover:bg-slate-800 cursor-pointer">
-          <FaUsers />
-          Users
-        </li>
+            <span className="sidebar-link-icon">
+              {item.icon}
+            </span>
 
-      </ul>
+            <span>
+              {item.name}
+            </span>
 
-      <div className="absolute bottom-0 w-full border-t border-slate-700">
+          </NavLink>
+        ))}
 
-        <button className="flex items-center gap-3 w-full px-6 py-4 hover:bg-red-600">
+      </nav>
+
+
+      {/* ==============================
+          SIDEBAR BOTTOM
+      ============================== */}
+
+      <div className="sidebar-bottom">
+
+        <div className="admin-profile">
+
+          <div className="admin-avatar">
+            A
+          </div>
+
+          <div className="admin-profile-info">
+
+            <strong>
+              Admin
+            </strong>
+
+            <span>
+              Administrator
+            </span>
+
+          </div>
+
+        </div>
+
+
+        {/* LOGOUT */}
+
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="
+            mt-4
+            w-full
+            flex
+            items-center
+            justify-center
+            gap-3
+            px-4
+            py-3
+            rounded-xl
+            bg-red-50
+            text-red-600
+            font-semibold
+            hover:bg-red-100
+            transition
+          "
+        >
+
           <FaSignOutAlt />
+
           Logout
+
         </button>
 
       </div>
 
-    </div>
+    </aside>
   );
 }
 

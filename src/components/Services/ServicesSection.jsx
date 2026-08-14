@@ -1,100 +1,359 @@
+import "./ServicesSection.css";
+
 import {
   FaBroadcastTower,
-  FaCloud,
   FaVideo,
+  FaDatabase,
   FaNetworkWired,
-  FaTools,
   FaServer,
+  FaTools,
+  FaArrowRight,
+  FaCheckCircle,
 } from "react-icons/fa";
+
 import { motion } from "framer-motion";
+
 
 const services = [
   {
     icon: <FaBroadcastTower />,
+    number: "01",
     title: "Broadcast Solutions",
     description:
-      "Advanced broadcast technology solutions for television networks, media companies, and content providers."
+      "Professional broadcast technology solutions designed for broadcasters, television networks, media organizations, and content providers.",
   },
-  {
-    icon: <FaServer />,
-    title: "System Integration",
-    description:
-      "Seamless integration of enterprise hardware, software, and network infrastructure for efficient operations."
-  },
-  {
-    icon: <FaCloud />,
-    title: "Cloud Infrastructure",
-    description:
-      "Scalable cloud deployment, migration, virtualization, and infrastructure management services."
-  },
+
   {
     icon: <FaVideo />,
-    title: "Media Workflow",
+    number: "02",
+    title: "Video & Media Solutions",
     description:
-      "Optimized media asset management, production workflows, and content delivery solutions."
+      "Reliable video and media technologies supporting professional content workflows, signal management, production, and distribution.",
   },
+
+  {
+    icon: <FaDatabase />,
+    number: "03",
+    title: "Storage & Data Solutions",
+    description:
+      "High-performance storage and data infrastructure solutions designed for secure, scalable, and dependable business environments.",
+  },
+
   {
     icon: <FaNetworkWired />,
-    title: "Enterprise Networking",
+    number: "04",
+    title: "Networking Solutions",
     description:
-      "Secure, high-performance networking solutions designed for enterprise and broadcast environments."
+      "Reliable networking infrastructure that enables efficient connectivity, communication, data transfer, and system performance.",
   },
+
+  {
+    icon: <FaServer />,
+    number: "05",
+    title: "Enterprise Infrastructure",
+    description:
+      "Professional infrastructure solutions built to support demanding enterprise, media, broadcast, and organizational environments.",
+  },
+
   {
     icon: <FaTools />,
-    title: "Technology Consulting",
+    number: "06",
+    title: "Integration & Technical Support",
     description:
-      "Professional consulting, facility planning, and workflow optimization to accelerate digital transformation."
-  }
+      "End-to-end technology integration, deployment assistance, workflow planning, and professional technical support for your organization.",
+  },
 ];
+
+
 function ServicesSection() {
   return (
-    <section className="py-24 bg-gray-50" id="services">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-[#c82b2b] font-semibold uppercase tracking-widest">
-            Our Services
+    <section className="services-section" id="services">
+
+      {/* ==========================================
+          BACKGROUND DECORATION
+      ========================================== */}
+
+      <div className="services-bg-circle services-circle-one"></div>
+
+      <div className="services-bg-circle services-circle-two"></div>
+
+      <div className="services-grid-pattern"></div>
+
+
+      {/* ==========================================
+          MAIN CONTAINER
+      ========================================== */}
+
+      <div className="services-container">
+
+
+        {/* ==========================================
+            SECTION HEADER
+        ========================================== */}
+
+        <motion.div
+          className="services-header"
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.7,
+            ease: "easeOut",
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+        >
+
+          <div className="services-badge">
+            <span className="services-badge-dot"></span>
+
+            OUR SERVICES
+          </div>
+
+
+          <h2 className="services-title">
+            Technology Solutions
+            <span> Built Around Your Needs</span>
+          </h2>
+
+
+          <p className="services-description">
+            From broadcast and media technology to professional storage,
+            networking, infrastructure, and system integration, we provide
+            dependable solutions designed for modern organizations.
           </p>
 
-          <h2 className="text-4xl lg:text-5xl font-bold mt-4">
-  Our Expertise
-</h2>
+        </motion.div>
 
-          <p className="text-gray-600 mt-5 max-w-3xl mx-auto">
-  We deliver end-to-end technology solutions for broadcasters,
-  media organizations, and enterprises through innovative
-  infrastructure, storage, networking, and system integration services.
-</p>
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* ==========================================
+            SERVICES GRID
+        ========================================== */}
+
+        <div className="services-grid">
+
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2"
+
+            <motion.article
+              key={service.number}
+              className="service-card"
+              initial={{
+                opacity: 0,
+                y: 35,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.55,
+                delay: index * 0.08,
+                ease: "easeOut",
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              whileHover={{
+                y: -7,
+              }}
             >
-              <div className="w-16 h-16 bg-[#c82b2b] rounded-full flex items-center justify-center text-white text-3xl mb-6">
+
+              {/* TOP ACCENT */}
+
+              <div className="service-card-line"></div>
+
+
+              {/* NUMBER */}
+
+              <span className="service-number">
+                {service.number}
+              </span>
+
+
+              {/* ICON */}
+
+              <div className="service-icon">
                 {service.icon}
               </div>
 
-              <h3 className="text-2xl font-bold mb-4">
+
+              {/* TITLE */}
+
+              <h3 className="service-title">
                 {service.title}
               </h3>
 
-              <p className="text-gray-600 leading-7">
+
+              {/* DESCRIPTION */}
+
+              <p className="service-description">
                 {service.description}
               </p>
 
-              <button className="mt-6 text-[#c82b2b] font-semibold hover:underline">
-                Learn More →
-              </button>
-            </motion.div>
+
+              {/* LEARN MORE */}
+
+              <a
+                href="#contact"
+                className="service-link"
+              >
+                <span>Discuss Your Requirements</span>
+
+                <FaArrowRight />
+              </a>
+
+            </motion.article>
+
           ))}
+
         </div>
+
+
+        {/* ==========================================
+            SERVICE HIGHLIGHTS
+        ========================================== */}
+
+        <motion.div
+          className="services-highlights"
+          initial={{
+            opacity: 0,
+            y: 25,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          viewport={{
+            once: true,
+          }}
+        >
+
+          <div className="highlight-item">
+
+            <FaCheckCircle />
+
+            <span>
+              Professional Technology
+            </span>
+
+          </div>
+
+
+          <div className="highlight-item">
+
+            <FaCheckCircle />
+
+            <span>
+              Reliable Infrastructure
+            </span>
+
+          </div>
+
+
+          <div className="highlight-item">
+
+            <FaCheckCircle />
+
+            <span>
+              Scalable Solutions
+            </span>
+
+          </div>
+
+
+          <div className="highlight-item">
+
+            <FaCheckCircle />
+
+            <span>
+              Technical Expertise
+            </span>
+
+          </div>
+
+        </motion.div>
+
+
+        {/* ==========================================
+            BOTTOM CTA
+        ========================================== */}
+
+        <motion.div
+          className="services-cta"
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+        >
+
+          {/* CTA DECORATION */}
+
+          <div className="cta-glow"></div>
+
+          <div className="cta-pattern"></div>
+
+
+          {/* CTA CONTENT */}
+
+          <div className="services-cta-content">
+
+            <span className="cta-label">
+              HAVE A REQUIREMENT?
+            </span>
+
+            <h3>
+              Let's Build the Right
+              <span> Technology Solution.</span>
+            </h3>
+
+            <p>
+              Tell us about your requirements and our team can
+              help identify the right technology, infrastructure,
+              and solution for your organization.
+            </p>
+
+          </div>
+
+
+          {/* CTA BUTTON */}
+
+          <a
+            href="#contact"
+            className="services-cta-button"
+          >
+            <span>
+              Talk To Our Team
+            </span>
+
+            <FaArrowRight />
+          </a>
+
+        </motion.div>
+
       </div>
+
     </section>
   );
 }

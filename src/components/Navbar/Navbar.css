@@ -1,108 +1,660 @@
-.navbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:80px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 8%;
-z-index:999;
-transition:.35s;
-background:transparent;
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5%;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #eeeeee;
+
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.05);
+
+  z-index: 1000;
+
+  transition:
+    height 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
-.navbar-scrolled{
-background:rgba(255,255,255,.96);
-backdrop-filter:blur(10px);
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+/* =====================================================
+   SCROLLED NAVBAR
+===================================================== */
+
+.navbar-scrolled {
+  height: 82px;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.09);
 }
 
-.logo img{
-height:52px;
+
+/* =====================================================
+   LOGO CONTAINER
+===================================================== */
+
+.navbar-logo {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 0;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+
+  height: 100%;
+
+  margin: 0;
+
+  padding: 0;
+
+  overflow: visible;
 }
 
-.nav-links{
-display:flex;
-align-items:center;
-gap:35px;
-list-style:none;
+
+/* =====================================================
+   LOGO SYMBOL
+===================================================== */
+
+.logo-symbol {
+  width: 200px !important;
+  height: 100px !important;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  display: block;
+
+  flex-shrink: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  position: relative;
+
+  z-index: 1;
 }
 
-.nav-links a{
-text-decoration:none;
-color:#111827;
-font-weight:600;
-position:relative;
-transition:.3s;
+
+/* =====================================================
+   LOGO TEXT
+===================================================== */
+
+.logo-text {
+  width: 250px !important;
+
+  height: auto;
+
+  object-fit: contain;
+
+  object-position: left center;
+
+  display: block;
+
+  flex-shrink: 0;
+
+  /*
+    Small negative margin keeps the
+    two logo parts visually connected.
+  */
+  margin-left: -22px !important;
+
+  padding: 0;
+
+  position: relative;
+
+  z-index: 2;
 }
 
-.nav-links a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-6px;
-width:0;
-height:2px;
-background:#c82b2b;
-transition:.3s;
+
+/* =====================================================
+   SCROLLED LOGO
+===================================================== */
+
+.navbar-scrolled .logo-symbol {
+  width: 180px !important;
+  height: 80px !important;
 }
 
-.nav-links a:hover::after{
-width:100%;
+.navbar-scrolled .logo-text {
+  width: 220px !important;
+
+  margin-left: -20px !important;
 }
 
-.nav-btn{
-background:#c82b2b;
-color:#fff;
-border:none;
-padding:12px 24px;
-border-radius:8px;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 32px;
+
+  list-style: none;
+
+  margin: 0 0 0 auto;
+
+  padding: 0;
 }
 
-.nav-btn:hover{
-background:#a91f1f;
-transform:translateY(-2px);
+
+/* =====================================================
+   NAVIGATION ITEMS
+===================================================== */
+
+.nav-links li {
+  list-style: none;
 }
 
-.menu-icon{
-display:none;
-font-size:28px;
-cursor:pointer;
+
+/* =====================================================
+   NAVIGATION LINKS
+===================================================== */
+
+.nav-links a {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  color: #111827;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease;
 }
 
-@media(max-width:992px){
 
-.menu-icon{
-display:block;
+/* =====================================================
+   LINK HOVER
+===================================================== */
+
+.nav-links a:hover {
+  color: #c82b2b;
 }
 
-.nav-links{
-position:fixed;
-top:80px;
-right:-100%;
-width:280px;
-height:100vh;
-background:#fff;
-display:flex;
-flex-direction:column;
-justify-content:flex-start;
-padding-top:40px;
-gap:30px;
-transition:.35s;
-box-shadow:-5px 0 20px rgba(0,0,0,.08);
+
+/* =====================================================
+   LINK UNDERLINE
+===================================================== */
+
+.nav-links a:not(.nav-btn)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: -7px;
+
+  width: 0;
+
+  height: 2px;
+
+  background: #c82b2b;
+
+  transition:
+    width 0.25s ease;
 }
 
-.nav-links.active{
-right:0;
+.nav-links a:not(.nav-btn):hover::after {
+  width: 100%;
 }
 
-.nav-btn{
-margin-top:20px;
+
+/* =====================================================
+   PRODUCTS PAGE LINK
+===================================================== */
+
+.nav-page-link {
+  cursor: pointer;
 }
 
+
+/* =====================================================
+   LET'S TALK BUTTON
+===================================================== */
+
+.nav-button-wrapper {
+  margin-left: 4px;
+}
+
+.nav-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 12px 20px;
+
+  background: #c82b2b;
+
+  color: #ffffff !important;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.nav-btn:hover {
+  background: #a91f1f;
+
+  color: #ffffff !important;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(200, 43, 43, 0.25);
+}
+
+
+/* =====================================================
+   REMOVE UNDERLINE FROM BUTTON
+===================================================== */
+
+.nav-btn::after {
+  display: none !important;
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.nav-btn-icon {
+  font-size: 13px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.nav-btn:hover .nav-btn-icon {
+  transform: translateX(4px);
+}
+
+
+/* =====================================================
+   MOBILE MENU ICON
+===================================================== */
+
+.menu-icon {
+  display: none;
+
+  border: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  padding: 7px;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+.menu-icon:hover {
+  color: #c82b2b;
+}
+
+
+/* =====================================================
+   TABLET / SMALL DESKTOP
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .navbar {
+    padding: 0 25px;
+  }
+
+
+  /* LOGO */
+
+  .logo-symbol {
+    width: 62px !important;
+    height: 62px !important;
+  }
+
+  .logo-text {
+    width: 200px !important;
+
+    margin-left: -18px !important;
+  }
+
+
+  /* SCROLLED LOGO */
+
+  .navbar-scrolled .logo-symbol {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .navbar-scrolled .logo-text {
+    width: 190px !important;
+
+    margin-left: -17px !important;
+  }
+
+
+  /* NAVIGATION */
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .nav-btn {
+    padding: 11px 17px;
+  }
+}
+
+
+/* =====================================================
+   TABLET / MOBILE NAVIGATION
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    height: 78px;
+
+    padding: 0 20px;
+  }
+
+  .navbar-scrolled {
+    height: 70px;
+  }
+
+
+  /* =================================================
+     MOBILE LOGO
+  ================================================= */
+
+  .navbar-logo {
+    gap: 0;
+
+    max-width: calc(100% - 55px);
+  }
+
+  .logo-symbol {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .logo-text {
+    width: 200px !important;
+
+    margin-left: -14px !important;
+  }
+
+
+  /* =================================================
+     MOBILE SCROLLED LOGO
+  ================================================= */
+
+  .navbar-scrolled .logo-symbol {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .navbar-scrolled .logo-text {
+    width: 200px !important;
+
+    margin-left: -13px !important;
+  }
+
+
+  /* =================================================
+     HAMBURGER
+  ================================================= */
+
+  .menu-icon {
+    display: flex;
+
+    position: relative;
+
+    z-index: 1100;
+  }
+
+
+  /* =================================================
+     MOBILE MENU
+  ================================================= */
+
+  .nav-links {
+    position: absolute;
+
+    top: 78px;
+
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    margin: 0;
+
+    background: #ffffff;
+
+    border-top: 1px solid #eeeeee;
+
+    box-shadow:
+      0 10px 25px rgba(0, 0, 0, 0.10);
+
+    padding: 10px 20px 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+
+  /* =================================================
+     ACTIVE MOBILE MENU
+  ================================================= */
+
+  .nav-links.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+
+  /* =================================================
+     MOBILE MENU ITEMS
+  ================================================= */
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    width: 100%;
+
+    padding: 14px 8px;
+
+    font-size: 16px;
+  }
+
+
+  /* =================================================
+     REMOVE UNDERLINE ON MOBILE
+  ================================================= */
+
+  .nav-links a:not(.nav-btn)::after {
+    display: none;
+  }
+
+
+  /* =================================================
+     LET'S TALK
+  ================================================= */
+
+  .nav-button-wrapper {
+    margin: 8px 0 0;
+  }
+
+  .nav-btn {
+    width: 100%;
+
+    justify-content: center;
+
+    padding: 13px 18px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .navbar {
+    height: 70px;
+
+    padding: 0 14px;
+  }
+
+  .navbar-scrolled {
+    height: 64px;
+  }
+
+
+  /* =================================================
+     SMALL MOBILE LOGO
+  ================================================= */
+
+  .navbar-logo {
+    gap: 0;
+
+    max-width: calc(100% - 48px);
+  }
+
+  .logo-symbol {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .logo-text {
+    width: 160px !important;
+
+    margin-left: -12px !important;
+  }
+
+
+  /* =================================================
+     SMALL MOBILE SCROLLED LOGO
+  ================================================= */
+
+  .navbar-scrolled .logo-symbol {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .navbar-scrolled .logo-text {
+    width: 160px !important;
+
+    margin-left: -11px !important;
+  }
+
+
+  /* =================================================
+     MENU ICON
+  ================================================= */
+
+  .menu-icon {
+    font-size: 22px;
+
+    padding: 6px;
+  }
+
+
+  /* =================================================
+     MOBILE MENU POSITION
+  ================================================= */
+
+  .nav-links {
+    top: 70px;
+
+    padding-left: 15px;
+
+    padding-right: 15px;
+  }
 }

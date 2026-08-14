@@ -1,20 +1,116 @@
 import axios from "axios";
 
+// =====================================================
+// API BASE URL
+// =====================================================
+
 const API = axios.create({
   baseURL: "http://localhost:5000/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-// GET
-export const getProducts = () => API.get("/products");
+// =====================================================
+// ATTACH ADMIN TOKEN AUTOMATICALLY
+// =====================================================
 
-// CREATE
-export const createProduct = (product) =>
-  API.post("/products", product);
+API.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("adminToken");
 
-// UPDATE
-export const updateProduct = (id, product) =>
-  API.put(`/products/${id}`, product);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
 
-// DELETE
-export const deleteProduct = (id) =>
-  API.delete(`/products/${id}`);
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// =====================================================
+// GET ALL PRODUCTS - PUBLIC
+// =====================================================
+
+export const getProducts = () => {
+  return API.get("/products");
+};
+
+// =====================================================
+// GET SINGLE PRODUCT - PUBLIC
+// =====================================================
+
+export const getProduct = (id) => {
+  return API.get(`/products/${id}`);
+};
+
+// =====================================================
+// CREATE PRODUCT - ADMIN ONLY
+// =====================================================
+
+export const createProduct = (productData) => {
+  return API.post("/products", productData);
+};
+
+// =====================================================
+// UPDATE PRODUCT - ADMIN ONLY
+// =====================================================
+
+export const updateProduct = (id, productData) => {
+  return API.put(`/products/${id}`, productData);
+};
+
+// =====================================================
+// DELETE PRODUCT - ADMIN ONLY
+// =====================================================
+
+export const deleteProduct = (id) => {
+  return API.delete(`/products/${id}`);
+};
+
+// =====================================================
+// BULK UPLOAD PRODUCTS USING CSV - ADMIN ONLY
+// =====================================================
+
+export const bulkUploadProducts = (file) => {
+  const formData = new FormData();
+
+  formData.append("file", file);
+
+  return API.post(
+    "/products/bulk-upload",
+    formData
+  );
+};
+
+// =====================================================
+// OPTIONAL: GET PRODUCTS BY CATEGORY
+// =====================================================
+
+export const getProductsByCategory = (category) => {
+  return API.get("/products", {
+    params: {
+      category,
+    },
+  });
+};
+
+// =====================================================
+// OPTIONAL: GET PRODUCTS BY BRAND
+// =====================================================
+
+export const getProductsByBrand = (brand) => {
+  return API.get("/products", {
+    params: {
+      brand,
+    },
+  });
+};
+
+// =====================================================
+// DEFAULT EXPORT
+// =====================================================
+
+export default API;

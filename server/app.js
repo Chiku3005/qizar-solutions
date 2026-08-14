@@ -1,5 +1,8 @@
+const productRoutes = require("./routes/productRoutes");
 const connectDB = require("./config/db");
 const express = require("express");
+const orderRoutes = require("./routes/OrderRoutes");
+const userRoutes = require("./routes/userRoutes");
 const cors = require("cors");
 require("dotenv").config();
 connectDB();
@@ -21,6 +24,9 @@ app.get("/api", (req, res) => {
     message: "Welcome to Qizar Solutions API"
   });
 });
+
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // Server
 const PORT = process.env.PORT || 5000;
