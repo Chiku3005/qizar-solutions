@@ -29,7 +29,6 @@ import ProductsPage from "./admin/ProductsPage";
 // =====================================================
 
 import { getProducts } from "./api/productApi";
-import ProtectedRoute from "./admin/ProtectedRoute";
 
 
 // =====================================================
@@ -161,7 +160,7 @@ function ProtectedAdminRoute({ children }) {
 
       try {
         await axios.get(
-          "http://localhost:5000/api/auth/me",
+          "https://api.qizarsolutions.in/api/auth/me",
           {
             headers: {
               Authorization: `Bearer ${token}`,

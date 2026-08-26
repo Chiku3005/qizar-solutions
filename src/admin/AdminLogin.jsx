@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function AdminLogin() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,40 +31,81 @@ function AdminLogin() {
 
       console.log("LOGIN SUCCESS:", response.data);
 
-      const token = response.data.token;
+      const token = response?.data?.token;
+
+      // =================================================
+      // CHECK TOKEN
+      // =================================================
 
       if (!token) {
-        console.error("No token received from backend.");
+        console.error(
+          "No authentication token received from backend."
+        );
 
-        setError("Login succeeded but no authentication token was received.");
+        setError(
+          "Login succeeded, but no authentication token was received."
+        );
+
         return;
       }
 
-      // Save token
+      // =================================================
+      // SAVE ADMIN TOKEN
+      // =================================================
+
       localStorage.setItem("adminToken", token);
 
-      // Save login status
-      localStorage.setItem("adminToken", token);
-      console.log("TOKEN SAVED:", localStorage.getItem("adminToken"));
+      console.log(
+        "TOKEN SAVED:",
+        localStorage.getItem("adminToken")
+      );
+
+      // =================================================
+      // OPTIONAL LEGACY FLAG
+      // =================================================
+      // Keeping this for compatibility with any older
+      // component that may still use it.
+
+      localStorage.setItem(
+        "isAdminLoggedIn",
+        "true"
+      );
+
       console.log(
         "LOGIN STATUS:",
         localStorage.getItem("isAdminLoggedIn")
       );
 
-      console.log("REDIRECTING TO DASHBOARD...");
+      // =================================================
+      // REDIRECT
+      // =================================================
 
-      navigate("/admin/dashboard", { replace: true });
+      const destination =
+        location.state?.from ||
+        "/admin/dashboard";
+
+      console.log(
+        "REDIRECTING TO:",
+        destination
+      );
+
+      navigate(destination, {
+        replace: true,
+      });
 
     } catch (error) {
-      console.error("LOGIN ERROR:", error);
+      console.error(
+        "LOGIN ERROR:",
+        error
+      );
 
       console.log(
         "Backend response:",
-        error.response?.data
+        error?.response?.data
       );
 
       setError(
-        error.response?.data?.message ||
+        error?.response?.data?.message ||
           "Unable to login. Please check your credentials."
       );
     } finally {
@@ -75,6 +117,10 @@ function AdminLogin() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-6">
 
       <div className="w-full max-w-md">
+
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
         <div className="text-center mb-8">
 
@@ -88,6 +134,10 @@ function AdminLogin() {
 
         </div>
 
+        {/* =================================================
+            LOGIN CARD
+        ================================================= */}
+
         <div className="bg-white rounded-2xl shadow-xl p-8">
 
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
@@ -98,13 +148,23 @@ function AdminLogin() {
             Sign in to access the administration dashboard.
           </p>
 
+          {/* =================================================
+              ERROR
+          ================================================= */}
+
           {error && (
             <div className="mb-5 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
               {error}
             </div>
           )}
 
+          {/* =================================================
+              FORM
+          ================================================= */}
+
           <form onSubmit={handleLogin}>
+
+            {/* EMAIL */}
 
             <div className="mb-5">
 
@@ -115,13 +175,29 @@ function AdminLogin() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
                 placeholder="Enter admin email"
                 required
-                className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-[#c82b2b] focus:ring-2 focus:ring-red-100"
+                autoComplete="email"
+                className="
+                  w-full
+                  border
+                  border-gray-300
+                  rounded-xl
+                  px-4
+                  py-3
+                  outline-none
+                  focus:border-[#c82b2b]
+                  focus:ring-2
+                  focus:ring-red-100
+                "
               />
 
             </div>
+
+            {/* PASSWORD */}
 
             <div className="mb-6">
 
@@ -132,25 +208,56 @@ function AdminLogin() {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
                 placeholder="Enter admin password"
                 required
-                className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-[#c82b2b] focus:ring-2 focus:ring-red-100"
+                autoComplete="current-password"
+                className="
+                  w-full
+                  border
+                  border-gray-300
+                  rounded-xl
+                  px-4
+                  py-3
+                  outline-none
+                  focus:border-[#c82b2b]
+                  focus:ring-2
+                  focus:ring-red-100
+                "
               />
 
             </div>
 
+            {/* LOGIN BUTTON */}
+
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#c82b2b] hover:bg-red-700 disabled:bg-gray-400 text-white font-semibold py-3 rounded-xl transition"
+              className="
+                w-full
+                bg-[#c82b2b]
+                hover:bg-red-700
+                disabled:bg-gray-400
+                disabled:cursor-not-allowed
+                text-white
+                font-semibold
+                py-3
+                rounded-xl
+                transition
+              "
             >
-              {loading ? "Signing in..." : "Login"}
+              {loading
+                ? "Signing in..."
+                : "Login"}
             </button>
 
           </form>
 
         </div>
+
+        {/* FOOTER */}
 
         <p className="text-center text-gray-400 text-sm mt-6">
           © {new Date().getFullYear()} Qizar Solutions Pvt. Ltd.

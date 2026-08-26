@@ -369,12 +369,12 @@
   /* LOGO */
 
   .logo-symbol {
-    width: 62px !important;
-    height: 62px !important;
+    width: 100px !important;
+    height: 200px !important;
   }
 
   .logo-text {
-    width: 200px !important;
+    width: 240px !important;
 
     margin-left: -18px !important;
   }
@@ -383,12 +383,12 @@
   /* SCROLLED LOGO */
 
   .navbar-scrolled .logo-symbol {
-    width: 56px !important;
-    height: 56px !important;
+    width: 100px !important;
+    height: 200px !important;
   }
 
   .navbar-scrolled .logo-text {
-    width: 190px !important;
+    width: 240px !important;
 
     margin-left: -17px !important;
   }

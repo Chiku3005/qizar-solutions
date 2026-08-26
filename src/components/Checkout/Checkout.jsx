@@ -60,7 +60,7 @@ function Checkout() {
       console.log("Sending order:", orderData);
 
       const response = await axios.post(
-        "http://localhost:5000/api/orders",
+        "https://api.qizarsolutions.in/api/orders",
         orderData
       );
 

@@ -37,3 +37,6 @@ build/
 # Logs
 *.log
 npm-debug.log*
+
+# Archives / deployment files
+*.zip
